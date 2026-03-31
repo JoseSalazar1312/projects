@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    image: php:8.2-fpm
+    container_name: miapp_php
+    volumes:
+      - .:/var/www/html
+
+  web:
+    image: nginx:latest
+    container_name: miapp_nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
