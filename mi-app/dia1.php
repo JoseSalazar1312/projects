@@ -15,6 +15,7 @@ class Persona{
     $this->email = $email;
     }
 
+    //Metodos 
     public function saludar(): string{
         return "Hola, me llamo {$this->nombre} y tengo {$this->edad}.";
     }
