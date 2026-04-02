@@ -51,8 +51,6 @@ trait Formateable{
 
 }
 
-
-
 class Producto {
     use Timestampable, Auditable, Sluggable, Formateable;
 
