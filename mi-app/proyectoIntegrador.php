@@ -29,7 +29,7 @@ trait Registrable
 
 trait Historial
 {
-    private $historial = [];
+    private array $historial = [];
 
     public function agregarRegistro(string $evento): void
     {
@@ -144,11 +144,7 @@ class Aguila extends Animal implements Entrenable
         return $habilidad;
     }
 
-    public function alimentar(string $comida): string
-    {
-        $this->evento = "Alimentado con: " . $comida;
-        return $comida;
-    }
+
 }
 
 
@@ -171,6 +167,7 @@ echo "===== Reporte Zoologico =====" . "<br>";
 foreach($animal as $an){
     echo "<br>";
     echo $an->describir();
+    echo "Ingreso: " . $an->getFechaIngreso() . "<br>";
     foreach($an->getHistorial() as $a){
         echo "-{$a} <br>";
     }
