@@ -26,7 +26,7 @@ $mensaje = match($estado){
 //echo $mensaje . "<br>";
 
 // Match con multiples condiciones por caso
-$codigo = 201;
+$codigo = 202;
 $descripcion = match($codigo){
     200,201 => "Exito",
     400 => "Solicitud Incorrecta",
@@ -98,6 +98,12 @@ $tienda2 = new Tienda(new Orden(new Usuario("Ana")));
 $tienda3 = new Tienda(null);
 
 $ciudad = $tienda1->ordenActiva?->usuario?->getDireccion()?->ciudad ?? "Sin ciudad";
-echo $ciudad . "<br>"; // CDMX
+echo $ciudad . "<br>"; 
+
+$ciudad = $tienda2->ordenActiva?->usuario?->getDireccion()?->ciudad ?? "Sin ciudad";
+echo $ciudad . "<br>"; 
+
+$orden = $tienda3->ordenActiva?->usuario?->getDireccion()?->ciudad ?? "Sin orden Activa";
+echo $orden . "<br>";
 
 
