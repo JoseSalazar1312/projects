@@ -59,3 +59,42 @@ try{
 }catch (Error $e){
     echo "Error: " . $e->getMessage() . "<br>";
 }
+
+//Reto exta: Crear una clase ConfiguracionApp usando promotion 
+enum Entorno{
+    case Local;
+    case Staging;
+    case Produccion;
+}
+
+class ConfiguracionApp{
+    public function __construct(
+        public readonly string $appNombre,
+        public readonly string $version,
+        public readonly Entorno $entorno,
+        public readonly bool $debug
+    ){}
+
+    public function esProduccion(): bool{
+        //Primera solucion usando if
+
+        // if($this->entorno === Enorno::Produccion){
+        //     return true;
+        // }else {
+        //     return false;
+        // }
+
+        //Segunda solucion optimizada
+        return  $this->entorno === Entorno::Produccion;
+    }
+
+    public function toString():string{
+        return "Nombre de la app: {$this->appNombre}" . "<br>" .
+        "Version: {$this->version}" . "<br>" .
+        "Fase: {$this->entorno->name}" . "<br>";
+    }
+}
+
+$config = new ConfiguracionApp("AppTest", "1.0.1", Entorno::Produccion, true);
+var_dump($config->esProduccion());
+echo $config->toString();
